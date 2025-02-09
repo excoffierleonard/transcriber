@@ -18,4 +18,4 @@ RUN python -c "import whisper; whisper.load_model('turbo')"
 COPY src src/
 
 # Run the application
-CMD ["python", "src/main.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "src.main:app"]
