@@ -56,3 +56,4 @@ API documentation and examples are available in [docs/api.md](docs/api.md).
 ## TODO
 
 - When a request is canceled, directly stop the transcription
+- Make that when the timeout is set to 0, the model is never unloaded
