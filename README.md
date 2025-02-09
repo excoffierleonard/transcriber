@@ -55,4 +55,4 @@ API documentation and examples are available in [docs/api.md](docs/api.md).
 
 ## TODO
 
-- When a request is canceled, directly stop the transcription
+- When a long request is canceled, directly stop the transcription, dont wait for the transcription to finish
