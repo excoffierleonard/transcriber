@@ -58,14 +58,16 @@ def reset_idle_timer():
     """
     Cancel any existing idle timer and start a new one.
     When the timer expires, unload_model will be called.
+    If MODEL_IDLE_TIMEOUT is 0, the timer is not scheduled and the model remains loaded.
     """
     global idle_timer
     with timer_lock:
         if idle_timer is not None:
             idle_timer.cancel()
-        idle_timer = threading.Timer(MODEL_IDLE_TIMEOUT, unload_model)
-        idle_timer.daemon = True  # so that the timer thread doesn't block app exit
-        idle_timer.start()
+        if MODEL_IDLE_TIMEOUT > 0:
+            idle_timer = threading.Timer(MODEL_IDLE_TIMEOUT, unload_model)
+            idle_timer.daemon = True  # so that the timer thread doesn't block app exit
+            idle_timer.start()
 
 
 def ensure_model_loaded():
