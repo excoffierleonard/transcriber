@@ -18,11 +18,27 @@ def save_temp_file(file):
     file.save(temp_audio.name)
     return temp_audio.name
 
+def post_process(text):
+    """
+    Strip leading/trailing whitespace, capitalize the first character, and add a period at the end if missing.
+    Note: .capitalize() would lowercase the rest of the string, so here we
+    only modify the first character if needed.
+    """
+    text = text.strip()
+    if text and text[0].islower():
+        text = text[0].upper() + text[1:]
+    if text and not text.endswith('.'):
+        text += '.'
+    return text
+
+
 def transcribe_file(file_path):
-    """Transcribe the audio file using the Whisper model."""
+    """Transcribe the audio file using the Whisper model and post-process the result."""
     with model_lock:
         result = model.transcribe(file_path)
-    return result["text"]
+    transcription = result["text"]
+    transcription = post_process(transcription)
+    return transcription
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe():

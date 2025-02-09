@@ -32,3 +32,4 @@ python3 src/main.py
 ## TODO
 
 - Add tests
+- When a request is canceled, directly stop the transcription
