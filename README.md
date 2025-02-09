@@ -40,4 +40,3 @@ python3 src/main.py
 
 - Add tests
 - When a request is canceled, directly stop the transcription
-- Build the api doc

@@ -96,7 +96,8 @@ def post_process(text):
     text = text.strip()
     if text and text[0].islower():
         text = text[0].upper() + text[1:]
-    if text and not text.endswith("."):
+    # TODO: Maybe find more elegant way to check for sentence end
+    if text and not text.endswith((".", "?", "!", ";", ":")):
         text += "."
     return text
 
