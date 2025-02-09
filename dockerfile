@@ -17,5 +17,5 @@ RUN python -c "import whisper; whisper.load_model('turbo')"
 # Copy source code
 COPY src src/
 
-# Run the application
+# Run the application (with one worker since whisper does not support parallelism)
 CMD ["gunicorn", "-b", "0.0.0.0:8080", "src.main:app"]
