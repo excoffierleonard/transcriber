@@ -15,7 +15,7 @@ def client():
         yield client
 
 
-def test_transcribe_endpoint_success(client):
+def test_transcribe_success(client):
     current_dir = os.path.dirname(os.path.abspath(__file__))
     input_file_path1 = os.path.join(current_dir, "inputs", "test_audio_1.mp3")
     input_file_path2 = os.path.join(current_dir, "inputs", "test_audio_2.mp3")
@@ -25,8 +25,8 @@ def test_transcribe_endpoint_success(client):
     ) as audio_file2:
         data = {
             "file": [
-                (audio_file1, "test_audio_1.mp3"),
-                (audio_file2, "test_audio_2.mp3"),
+                (audio_file1, os.path.basename(input_file_path1)),
+                (audio_file2, os.path.basename(input_file_path2)),
             ]
         }
         response = client.post(
