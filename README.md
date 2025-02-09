@@ -14,7 +14,7 @@ Transcriber is a simple tool to convert audio files to text. It uses the Whisper
 The configuration is done through environment variables.
 
 - `TRANSCRIBER_APP_PORT`: The port on which the application will listen. (Default is `8080`)
-- `MODEL_IDLE_TIMEOUT`: The time in seconds after which the model will be unloaded if it is not used. (Default is `300`)
+- `MODEL_IDLE_TIMEOUT`: The time in seconds after which the model will be unloaded if it is not used. (Default is `300`, set to `0` to never unload the model)
 
 ## 🚀 Deployment
 
@@ -56,5 +56,3 @@ API documentation and examples are available in [docs/api.md](docs/api.md).
 ## TODO
 
 - When a request is canceled, directly stop the transcription
-- Make that when the timeout is set to 0, the model is never unloaded
-- Readd to the gunicorn logs the loading and unloading of the model info
