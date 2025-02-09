@@ -33,5 +33,4 @@ python3 src/main.py
 
 - Add tests
 - When a request is canceled, directly stop the transcription
-- Implement a cooldown system, when the model is not used for a certain amount of time, offload it from the gpu
 - Build the api doc

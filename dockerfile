@@ -1,5 +1,8 @@
 FROM python:3.11-slim
 
+# Set environment variables
+ENV MODEL_IDLE_TIMEOUT=300
+
 # Install system dependencies
 RUN apt update && apt install -y \
     ffmpeg
