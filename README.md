@@ -2,14 +2,21 @@
 
 Transcriber is a simple tool to convert audio files to text. It uses the Whisper Turbo Model.
 
-## Configuration
+## 📚 Table of Contents
+
+- [⚙ Configuration](#-configuration)
+- [🚀 Deployment](#-deployment)
+- [🧪 Development](#-development)
+- [📖 API Documentation](#-api-documentation)
+
+## ⚙ Configuration
 
 The configuration is done through environment variables.
 
 - `TRANSCRIBER_APP_PORT`: The port on which the application will listen. (Default is `8080`)
 - `MODEL_IDLE_TIMEOUT`: The time in seconds after which the model will be unloaded if it is not used. (Default is `300`)
 
-## Deployment
+## 🚀 Deployment
 
 It is recommended to have an Nvidia GPU with at least 6GB of VRAM to run the model.
 
@@ -18,7 +25,7 @@ curl -o compose.yaml https://raw.githubusercontent.com/excoffierleonard/transcri
 docker compose up -d
 ```
 
-## Development
+## 🧪 Development
 
 ### Setup
 
@@ -36,7 +43,16 @@ pip install -r requirements.txt
 python3 src/main.py
 ```
 
+### Tests
+
+```bash
+pytest
+```
+
+## 📖 API Documentation
+
+API documentation and examples are available in [docs/api.md](docs/api.md).
+
 ## TODO
 
-- Add tests
 - When a request is canceled, directly stop the transcription
