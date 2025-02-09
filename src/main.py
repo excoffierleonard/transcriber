@@ -7,7 +7,8 @@ import os
 app = Flask(__name__)
 
 # Get idle timeout from env (default to 300 seconds = 5 minutes)
-IDLE_TIMEOUT = int(os.environ.get("MODEL_IDLE_TIMEOUT", 300))
+MODEL_IDLE_TIMEOUT = int(os.environ.get("MODEL_IDLE_TIMEOUT", 300))
+TRANSCRIBER_APP_PORT = int(os.environ.get("TRANSCRIBER_APP_PORT", 8080))
 
 # Global variables for the model and idle timer
 model = None
@@ -62,7 +63,7 @@ def reset_idle_timer():
     with timer_lock:
         if idle_timer is not None:
             idle_timer.cancel()
-        idle_timer = threading.Timer(IDLE_TIMEOUT, unload_model)
+        idle_timer = threading.Timer(MODEL_IDLE_TIMEOUT, unload_model)
         idle_timer.daemon = True  # so that the timer thread doesn't block app exit
         idle_timer.start()
 
@@ -122,4 +123,4 @@ def transcribe():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=TRANSCRIBER_APP_PORT)

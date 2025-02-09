@@ -2,6 +2,13 @@
 
 Transcriber is a simple tool to convert audio files to text. It uses the Whisper Turbo Model.
 
+## Configuration
+
+The configuration is done through environment variables.
+
+- `TRANSCRIBER_APP_PORT`: The port on which the application will listen. (Default is `8080`)
+- `MODEL_IDLE_TIMEOUT`: The time in seconds after which the model will be unloaded if it is not used. (Default is `300`)
+
 ## Deployment
 
 It is recommended to have an Nvidia GPU with at least 6GB of VRAM to run the model.
