@@ -1,8 +1,5 @@
 FROM python:3.11-slim
 
-# Set environment variables
-ENV MODEL_IDLE_TIMEOUT=300
-
 # Install system dependencies
 RUN apt update && apt install -y \
     ffmpeg
@@ -19,6 +16,9 @@ RUN python -c "import whisper; whisper.load_model('turbo')"
 
 # Copy source code
 COPY src src/
+
+# Set runtime environment variables
+ENV MODEL_IDLE_TIMEOUT=300
 
 # Run the application (with one worker since whisper does not support parallelism)
 CMD ["gunicorn", "-b", "0.0.0.0:8080", "src.main:app", "--access-logfile", "-", "--workers", "1", "--timeout", "3600"]
