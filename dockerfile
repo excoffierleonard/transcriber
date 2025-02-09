@@ -18,4 +18,4 @@ RUN python -c "import whisper; whisper.load_model('turbo')"
 COPY src src/
 
 # Run the application (with one worker since whisper does not support parallelism)
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "src.main:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "src.main:app", "--access-logfile", "-", "--workers", "1"]

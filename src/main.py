@@ -1,12 +1,16 @@
 from flask import Flask, request, jsonify
 import whisper
 import tempfile
+from threading import Lock
 
 # Initialize Flask app
 app = Flask(__name__)
 
 # Load the Whisper model
 model = whisper.load_model("turbo")
+
+# Create a lock to prevent concurrent access to the model
+model_lock = Lock()
 
 def save_temp_file(file):
     """Save the uploaded file to a temporary file and return the file path."""
@@ -16,7 +20,8 @@ def save_temp_file(file):
 
 def transcribe_file(file_path):
     """Transcribe the audio file using the Whisper model."""
-    result = model.transcribe(file_path)
+    with model_lock:
+        result = model.transcribe(file_path)
     return result["text"]
 
 @app.route('/transcribe', methods=['POST'])
