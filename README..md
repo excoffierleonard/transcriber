@@ -26,5 +26,9 @@ pip install -r requirements.txt
 ### Run
 
 ```bash
-gunicorn -b 0.0.0.0:8080 src.main:app --access-logfile - --workers 1
+python3 src/main.py
 ```
+
+## TODO
+
+- Add tests
