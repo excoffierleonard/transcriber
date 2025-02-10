@@ -30,8 +30,8 @@ docker compose up -d
 ### Setup
 
 ```bash
-git clone https://github.com/excoffierleonard/parser.git && \
-cd parser && \
+git clone https://github.com/excoffierleonard/transcriber.git && \
+cd transcriber && \
 python3 -m venv .venv && \
 source .venv/bin/activate && \
 pip install -r requirements.txt
@@ -56,3 +56,4 @@ API documentation and examples are available in [docs/api.md](docs/api.md).
 ## TODO
 
 - When a long request is canceled, directly stop the transcription, dont wait for the transcription to finish
+
