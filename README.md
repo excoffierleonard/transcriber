@@ -1,6 +1,13 @@
-# Transcriber
+# [Transcriber](https://transcriber.excoffierleonard.com)
 
 Transcriber is a simple tool to convert audio files to text. It uses the Whisper Turbo Model.
+
+Demonstration Endpoint: [https://transcriber.excoffierleonard.com/transcribe](https://transcriber.excoffierleonard.com/transcribe)
+
+```bash
+curl https://transcriber.excoffierleonard.com/transcribe \
+     -F "file=@tests/inputs/test_audio_1.mp3"
+```
 
 ## 📚 Table of Contents
 
@@ -8,6 +15,7 @@ Transcriber is a simple tool to convert audio files to text. It uses the Whisper
 - [🚀 Deployment](#-deployment)
 - [🧪 Development](#-development)
 - [📖 API Documentation](#-api-documentation)
+- [📜 License](#-license)
 
 ## ⚙ Configuration
 
@@ -52,6 +60,10 @@ pytest
 ## 📖 API Documentation
 
 API documentation and examples are available in [docs/api.md](docs/api.md).
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## TODO
 
