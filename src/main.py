@@ -6,9 +6,9 @@ import os
 
 app = Flask(__name__)
 
-# Get idle timeout from env (default to 300 seconds = 5 minutes)
 MODEL_IDLE_TIMEOUT = int(os.environ.get("MODEL_IDLE_TIMEOUT", 300))
 TRANSCRIBER_APP_PORT = int(os.environ.get("TRANSCRIBER_APP_PORT", 8080))
+ENABLE_FRONTEND = os.environ.get("ENABLE_FRONTEND", "false").lower() in ("true", "1")
 
 # Global variables for the model and idle timer
 model = None
@@ -125,9 +125,11 @@ def transcribe():
     return jsonify({"texts": transcriptions})
 
 
-@app.route("/")
-def index():
-    return send_from_directory("static", "index.html")
+if ENABLE_FRONTEND:
+
+    @app.route("/")
+    def index():
+        return send_from_directory("static", "index.html")
 
 
 if __name__ == "__main__":
