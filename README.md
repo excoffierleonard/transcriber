@@ -25,6 +25,7 @@ The configuration is done through environment variables.
 
 - `TRANSCRIBER_APP_PORT`: The port on which the application will listen. (Default is `8080`)
 - `MODEL_IDLE_TIMEOUT`: The time in seconds after which the model will be unloaded if it is not used. (Default is `300`, set to `0` to never unload the model)
+- `ENABLE_FRONTEND`: Enable the frontend. (Default is `false`)
 
 ## 🚀 Deployment
 
