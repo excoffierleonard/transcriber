@@ -19,6 +19,7 @@ COPY src src/
 
 # Set runtime environment variables
 ENV MODEL_IDLE_TIMEOUT=300
+ENV ENABLE_FRONTEND=false
 
 # Run the application (with one worker since whisper does not support parallelism)
 CMD ["gunicorn", "-b", "0.0.0.0:8080", "src.main:app", "--access-logfile", "-", "--workers", "1", "--timeout", "3600"]

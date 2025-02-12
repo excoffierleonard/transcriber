@@ -8,6 +8,7 @@ services:
     restart: unless-stopped
     environment:
       MODEL_IDLE_TIMEOUT: ${MODEL_IDLE_TIMEOUT:-300}
+      ENABLE_FRONTEND: ${ENABLE_FRONTEND:-false}
     ports:
       - "${TRANSCRIBER_APP_PORT:-8080}:8080"
     networks:

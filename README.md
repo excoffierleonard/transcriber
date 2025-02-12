@@ -2,6 +2,8 @@
 
 Transcriber is a simple tool to convert audio files to text. It uses the Whisper Turbo Model.
 
+Demonstration URL: [https://transcriber.excoffierleonard.com](https://transcriber.excoffierleonard.com)
+
 Demonstration Endpoint: [https://transcriber.excoffierleonard.com/transcribe](https://transcriber.excoffierleonard.com/transcribe)
 
 ```bash
@@ -23,6 +25,7 @@ The configuration is done through environment variables.
 
 - `TRANSCRIBER_APP_PORT`: The port on which the application will listen. (Default is `8080`)
 - `MODEL_IDLE_TIMEOUT`: The time in seconds after which the model will be unloaded if it is not used. (Default is `300`, set to `0` to never unload the model)
+- `ENABLE_FRONTEND`: Enable the frontend. (Default is `false`)
 
 ## 🚀 Deployment
 
