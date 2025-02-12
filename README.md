@@ -2,6 +2,8 @@
 
 Transcriber is a simple tool to convert audio files to text. It uses the Whisper Turbo Model.
 
+Demonstration URL: [https://transcriber.excoffierleonard.com](https://transcriber.excoffierleonard.com)
+
 Demonstration Endpoint: [https://transcriber.excoffierleonard.com/transcribe](https://transcriber.excoffierleonard.com/transcribe)
 
 ```bash
