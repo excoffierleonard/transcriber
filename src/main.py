@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory, render_template
+from flask import Flask, request, jsonify, send_from_directory
 import whisper
 import tempfile
 import threading
@@ -122,7 +122,7 @@ def transcribe():
         temp_file_path = save_temp_file(file)
         transcription = transcribe_file(temp_file_path)
         transcriptions.append(transcription)
-    return render_template("result.html", texts=transcriptions)
+    return jsonify({"texts": transcriptions})
 
 
 @app.route("/")
