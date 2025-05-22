@@ -1,5 +1,0 @@
-setuptools-rust
-openai-whisper
-flask
-gunicorn
-pytest

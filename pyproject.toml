@@ -1,0 +1,17 @@
+[project]
+name = "transcriber"
+version = "0.1.0"
+description = "A simple tool to convert audio files to text."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.1.1",
+    "gunicorn>=23.0.0",
+    "openai-whisper>=20240930",
+    "setuptools-rust>=1.11.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+]
