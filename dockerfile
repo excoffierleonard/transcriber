@@ -1,18 +1,26 @@
-FROM python:3.11-slim
+FROM debian:stable-slim
+
+ENV PATH="/root/.local/bin:$PATH"
+ENV PYTHONPATH="/app"
 
 # Install system dependencies
 RUN apt update && apt install -y \
+    curl \
     ffmpeg
 
 # Set working directory
 WORKDIR /app
 
-# Install Python dependencies
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+# uv Installation
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Preload Whisper's Turbo model
-RUN python -c "import whisper; whisper.load_model('turbo')"
+# Python dependencies
+COPY pyproject.toml uv.lock .python-version ./
+RUN uv sync
+
+# Pre-download Whisper's Turbo model
+COPY scripts scripts/
+RUN uv run scripts/download_model.py
 
 # Copy source code
 COPY src src/
@@ -22,4 +30,4 @@ ENV MODEL_IDLE_TIMEOUT=300
 ENV ENABLE_FRONTEND=false
 
 # Run the application (with one worker since whisper does not support parallelism)
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "src.main:app", "--access-logfile", "-", "--workers", "1", "--timeout", "3600"]
+CMD ["uv", "run", "gunicorn", "-b", "0.0.0.0:8080", "src.main:app", "--access-logfile", "-", "--workers", "1", "--timeout", "3600"]

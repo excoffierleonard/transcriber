@@ -41,23 +41,19 @@ docker compose up -d
 ### Setup
 
 ```bash
-git clone https://github.com/excoffierleonard/transcriber.git && \
-cd transcriber && \
-python3 -m venv .venv && \
-source .venv/bin/activate && \
-pip install -r requirements.txt
+uv sync
 ```
 
 ### Run
 
 ```bash
-python3 src/main.py
+uv run src/main.py
 ```
 
 ### Tests
 
 ```bash
-pytest
+uv run pytest
 ```
 
 ## 📖 API Documentation
@@ -71,4 +67,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## TODO
 
 - When a long request is canceled, directly stop the transcription, dont wait for the transcription to finish
-

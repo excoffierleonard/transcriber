@@ -1,18 +1,14 @@
 services:
   app:
-    image: ghcr.io/excoffierleonard/transcriber
-    container_name: transcriber-app
+    image: ghcr.io/excoffierleonard/transcriber:latest
     build:
       context: .
-      dockerfile: dockerfile
     restart: unless-stopped
     environment:
       MODEL_IDLE_TIMEOUT: ${MODEL_IDLE_TIMEOUT:-300}
       ENABLE_FRONTEND: ${ENABLE_FRONTEND:-false}
     ports:
       - "${TRANSCRIBER_APP_PORT:-8080}:8080"
-    networks:
-      - transcriber
     # Enables GPU support
     runtime: nvidia
     deploy:
@@ -22,7 +18,3 @@ services:
             - driver: nvidia
               capabilities: [ gpu ]
               count: all
-
-networks:
-  transcriber:
-    name: transcriber
